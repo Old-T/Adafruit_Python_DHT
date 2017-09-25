@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # Copyright (c) 2014 Adafruit Industries
-# Author: Tony DiCola
+.# Author: Tony DiCola.
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import sys
+import paho.mqtt.client as mqtt
 
 import Adafruit_DHT
 
@@ -43,6 +44,10 @@ humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 # Un-comment the line below to convert the temperature to Fahrenheit.
 # temperature = temperature * 9/5.0 + 32
 
+# Connect to the MQTT server
+client = mqtt.Client()
+client.connect("192.168.2.50", 1883, 60)
+client.publish("temp/serverrum", temperature))
 # Note that sometimes you won't get a reading and
 # the results will be null (because Linux can't
 # guarantee the timing of calls to read the sensor).
