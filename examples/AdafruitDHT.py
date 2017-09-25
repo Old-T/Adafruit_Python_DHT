@@ -47,7 +47,7 @@ humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 # Connect to the MQTT server
 client = mqtt.Client()
 client.connect("192.168.2.50", 1883, 60)
-client.publish("temp/serverrum", temperature))
+client.publish("temp/serverrum", temperature)
 # Note that sometimes you won't get a reading and
 # the results will be null (because Linux can't
 # guarantee the timing of calls to read the sensor).
